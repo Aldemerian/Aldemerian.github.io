@@ -19,27 +19,34 @@ var allSkills = {};
 //document.getElementById(calculate).onclick = function(){code}
 function createSkills () {
 	var x = document.getElementById("xmlOld").innerHTML;
-	y=getElementsByTagName("standard");
-	numEle = y.length;
-	for (i in numEle) {
-		outputSkill={id:x.getElementsByTagName("standard")[i].id,
-			     name:x.getElementsByTagName("standard")[i].content,
-			     fach:"Mathe",
-			     alter:x.getElementsByTagName("stufe")[i].level,
-			     location: {
-				     @type: "Place",
-				     bundesland: "Berlin-Brandenburg"
-			     },
-			     alternateName: [x.getElementsByTagName("standard")[i].id, x.getElementsByTagName("standard")[i].content],
-			     category:"Logik",
-			     //if statement und zuordnung
-			     subcategory:"subarea.name or area.name",
-			     bloom:"stufe.level mit umrechnung",
-			     competence:"competence.name",
-			     description:"",
-			     klasse:"stufe.level mit umrechnung",
-			     url:""
-			    }' ;
+	//subarea oder area
+	subarea=getElementsByTagName("subarea");
+	z=subarea.length
+	for (sub in subarea) {
+		comp=getElementsByTagName("competence");
+		e=comp.length
+		for (c in comp) {
+			skill=getElementsByTagName("standard");
+			y = skill.length;
+			for (i in skill) {
+				outputSkill={id:x.getElementsByTagName("standard")[i].id,
+					     name:x.getElementsByTagName("standard")[i].content,
+					     fach:"Mathe",
+					     alter:x.getElementsByTagName("stufe")[i].level,
+					     location: {
+						     @type: "Place",
+						     bundesland: "Berlin-Brandenburg"
+					     },
+					     alternateName: [x.getElementsByTagName("standard")[i].id, x.getElementsByTagName("standard")[i].content],
+					     category:"Logik",
+					     //if statement und zuordnung
+					     subcategory:"subarea.name or area.name",
+					     bloom:x.getElementsByTagName("standard")[i].stufe.level,
+					     competence:"competence[c].name",
+					     description:"",
+					     klasse:"stufe.level mit umrechnung",
+					     url:""
+					    }' ;
 	}
 	stringify(outputSkill):
 	document.getElementById("skill").innerHTML = outputSkill;
