@@ -22,22 +22,23 @@ function createSkills () {
 	y=getElementsByTagName("standard");
 	numEle = y.length;
 	for (i in numEle) {
-		outputSkill='{"id":"",
-			     "name":"x.getElementsByTagName("standard")[i].content",
-			     "fach":"z.b. Sport",
-			     "alter":"stufe.level mit umrechnung",
-			     "location": {
-				     "@type": "Place",
-				     "bundesland": "Berlin-Brandenburg"
+		outputSkill={id:x.getElementsByTagName("standard")[i].id,
+			     name:x.getElementsByTagName("standard")[i].content,
+			     fach:"Mathe",
+			     alter:x.getElementsByTagName("stufe")[i].level,
+			     location: {
+				     @type: "Place",
+				     bundesland: "Berlin-Brandenburg"
 			     },
-			     "alternateName": ["standard.id", "name", "andere bundesländer name"],
-			     "category":"Logik oder Sprache oder Soziales oder Bewegung",
-			     "subcategory":"subarea.name or area.name",
-			     "bloom":"stufe.level mit umrechnung",
-			     "competence":"competence.name",
-			     "description":"",
-			     "klasse":"stufe.level mit umrechnung",
-			     "url":""
+			     alternateName: [x.getElementsByTagName("standard")[i].id, x.getElementsByTagName("standard")[i].content],
+			     category:"Logik",
+			     //if statement und zuordnung
+			     subcategory:"subarea.name or area.name",
+			     bloom:"stufe.level mit umrechnung",
+			     competence:"competence.name",
+			     description:"",
+			     klasse:"stufe.level mit umrechnung",
+			     url:""
 			    }' ;
 	}
 	stringify(outputSkill):
