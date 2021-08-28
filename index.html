@@ -36,7 +36,7 @@ function createSkills () {
 					     fach:"Mathe",
 					     alter:x.getElementsByTagName("stufe")[i].level,
 					     location: {
-						     @type: "Place",
+						     "@type": "Place",
 						     bundesland: "Berlin-Brandenburg"
 					     },
 					     alternateName: [x.getElementsByTagName("standard")[i].id, x.getElementsByTagName("standard")[i].content],
@@ -48,7 +48,7 @@ function createSkills () {
 					     description:"",
 					     klasse:"stufe.level mit umrechnung",
 					     url:""
-					    }' ;
+					    } ;
 				allSkills.push(outputSkill);
 			}
 		}
