@@ -19,7 +19,7 @@ var allSkills = {};
 //document.getElementById(calculate).onclick = function(){code}
 function createSkills () {
 	var x = document.getElementById("xmlOld").innerHTML;
-	parse x;
+	x=JSON.parse(x);
 	//subarea oder area
 	
 	var subarea= x.getElementsByTagName("subarea");
