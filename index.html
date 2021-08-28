@@ -9,7 +9,7 @@
 <textarea rows="10" cols="30" id="xmlOld">XML</textarea>
 <textarea id="skill">Skill</textarea>
 <br>
-	<button id="calculate" onclick="createSkills()">Recalculate</button>
+	<button id="calculate" onclick="createSkills()">Refactor this Bildungsplan</button>
 <br>
 <textarea id="comp">Comp</textarea>
 <textarea id="sub">Sub</textarea>
@@ -19,17 +19,19 @@ var allSkills = {};
 //document.getElementById(calculate).onclick = function(){code}
 function createSkills () {
 	var x = document.getElementById("xmlOld").innerHTML;
+	parse x;
 	//subarea oder area
-	subarea=getElementsByTagName("subarea");
-	z=subarea.length
+	
+	var subarea= x.getElementsByTagName("subarea");
+	var z= subarea.length;
 	for (sub in subarea) {
-		comp=getElementsByTagName("competence");
-		e=comp.length
+		var comp= subarea.getElementsByTagName("competence");
+		var e=comp.length;
 		for (c in comp) {
-			skill=getElementsByTagName("standard");
-			y = skill.length;
+			var skill=comp.getElementsByTagName("standard");
+			var y = skill.length;
 			for (i in skill) {
-				outputSkill={id:x.getElementsByTagName("standard")[i].id,
+				var outputSkill={id:x.getElementsByTagName("standard")[i].id,
 					     name:x.getElementsByTagName("standard")[i].content,
 					     fach:"Mathe",
 					     alter:x.getElementsByTagName("stufe")[i].level,
@@ -40,20 +42,22 @@ function createSkills () {
 					     alternateName: [x.getElementsByTagName("standard")[i].id, x.getElementsByTagName("standard")[i].content],
 					     category:"Logik",
 					     //if statement und zuordnung
-					     subcategory:"subarea[sub].name or area[sub].name",
+					     subcategory:"subarea.name or area.name",
 					     bloom:x.getElementsByTagName("standard")[i].stufe.level,
-					     competence:"competence[c].name",
+					     competence:"competence.name",
 					     description:"",
 					     klasse:"stufe.level mit umrechnung",
 					     url:""
 					    }' ;
+				allSkills.push(outputSkill);
+			}
+		}
 	}
-	stringify(outputSkill):
-	document.getElementById("skill").innerHTML = outputSkill;
-	document.getElementById("comp").innerHTML = outputComp;
-	document.getElementById("sub").innerHTML = outputSub;
-}
-
+	allSkills=stringify(allSkills):
+	document.getElementById("skill").innerHTML = allSkills;
+	//document.getElementById("comp").innerHTML = outputComp;
+	//document.getElementById("sub").innerHTML = outputSub;
+};
 //for
 </script>
 <body>
