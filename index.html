@@ -16,9 +16,12 @@
 <script>
 var allSkills = {};
 
+
 //document.getElementById(calculate).onclick = function(){code}
 function createSkills () {
 	var x = document.getElementById("xmlOld").innerHTML;
+	const parser = new DOMParser();
+	x = parser.parseFromString(x, "application/xml");
 	//subarea oder area
 	
 	var subarea= x.getElementsByTagName("subarea");
