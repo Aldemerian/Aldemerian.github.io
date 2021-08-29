@@ -21,7 +21,7 @@ var allSkills = {};
 function createSkills () {
 	var x = document.getElementById("xmlOld").innerHTML;
 	const parser = new DOMParser();
-	x = parser.parseFromString(x, "application/xml");
+	x = parser.parseFromString(x, "text/xml");
 	//subarea oder area
 	
 	var subarea= x.getElementsByTagName("subarea");
